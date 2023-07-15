@@ -8,5 +8,7 @@ interface IProps {
 }
 
 export const Input = ({ placeholder, value, onChange }: IProps) => {
-  return <StyledInput placeholder={placeholder} onChange={onChange} />;
+  return (
+    <StyledInput placeholder={placeholder} onChange={onChange} value={value} />
+  );
 };

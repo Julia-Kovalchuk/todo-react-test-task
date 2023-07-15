@@ -6,7 +6,7 @@ const StyledApp = styled.div`
   padding: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export { StyledApp };

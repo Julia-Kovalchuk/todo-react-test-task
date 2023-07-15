@@ -2,19 +2,19 @@ import React from "react";
 import { ListItem } from "../ListItem/ListItem";
 import { Message, StyledList } from "./styles";
 import { ITodo } from "../../types/types";
+import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
+import { getTodos } from "../../store/selectors/todosSelectors";
 
 export const List = () => {
-  const list: ITodo[] = [
-    { id: "1", title: "Clear", state: "active" },
-    { id: "2", title: "Clear", state: "active" },
-  ];
+  const dispatch = useAppDispatch();
+  const { todos } = useAppSelector(getTodos);
 
   return (
     <StyledList>
-      {list.length === 0 ? (
+      {todos.length === 0 ? (
         <Message>your to-do list is still empty</Message>
       ) : (
-        list.map((todo) => {
+        todos.map((todo) => {
           return <ListItem todo={todo} key={todo.id} />;
         })
       )}

@@ -7,8 +7,8 @@ export const Wrapper = () => {
   return (
     <StyledWrapper>
       <Title>
-        {title.split("").map((letter) => (
-          <div>{letter}</div>
+        {title.split("").map((letter, index) => (
+          <div key={index}>{letter}</div>
         ))}
       </Title>
     </StyledWrapper>

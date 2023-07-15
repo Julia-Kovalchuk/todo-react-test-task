@@ -4,9 +4,17 @@ import { Input } from "../Input/Input";
 import { useInput } from "../../hooks/useInput";
 import { Button, ButtonStyles } from "../Button/Button";
 import { List } from "../List/List";
+import { useAppDispatch } from "../../store/hooks/hooks";
+import { addTodo } from "../../store/feautures/todosSlice";
 
 export const Todo = () => {
-  const { inputValue, onChange } = useInput();
+  const { inputValue, onChange, setInputValue } = useInput();
+  const dispatch = useAppDispatch();
+
+  const handleAddTodo = () => {
+    dispatch(addTodo(inputValue));
+    setInputValue("");
+  };
 
   return (
     <Container>
@@ -19,7 +27,7 @@ export const Todo = () => {
         <Button
           title="Add"
           type="button"
-          onClick={() => {}}
+          onClick={handleAddTodo}
           typeStyle={ButtonStyles.Primary}
         />
       </InputBox>

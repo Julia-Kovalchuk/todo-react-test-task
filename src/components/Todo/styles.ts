@@ -6,9 +6,7 @@ const Container = styled.div`
   flex-direction: column;
   grid-gap: 20px;
   width: 600px;
-  min-width: 600px;
-  min-height: 600px;
-  max-height: 600px;
+  margin-top: 17vh;
   /* background: yellow; */
 `;
 

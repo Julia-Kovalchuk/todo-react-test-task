@@ -6,8 +6,10 @@ const StyledList = styled.ul`
   flex-direction: column;
 
   width: 100%;
-  min-height: 50vh;
+  min-height: 500px;
+  max-height: 500px;
   color: ${Color.White};
+  overflow-y: auto;
 
   /* background: yellow; */
 `;

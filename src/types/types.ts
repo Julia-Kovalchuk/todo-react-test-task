@@ -1,4 +1,4 @@
-type TodoStateType = "active" | "completed";
+export type TodoStateType = "active" | "completed";
 
 export interface ITodo {
   id: string;

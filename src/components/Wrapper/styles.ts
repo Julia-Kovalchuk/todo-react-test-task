@@ -22,7 +22,7 @@ const Title = styled.h1`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 30%;
+  height: 30vh;
   background: linear-gradient(to right, #003399 0%, #cc00cc 100%);
   font-size: 120px;
   color: ${Color.White};
