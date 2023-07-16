@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/todo-react-test-task/static/js/main.c4c9c174.js",
+    "main.js": "/todo-react-test-task/static/js/main.a77a1cee.js",
     "index.html": "/todo-react-test-task/index.html",
-    "main.c4c9c174.js.map": "/todo-react-test-task/static/js/main.c4c9c174.js.map"
+    "main.a77a1cee.js.map": "/todo-react-test-task/static/js/main.a77a1cee.js.map"
   },
   "entrypoints": [
-    "static/js/main.c4c9c174.js"
+    "static/js/main.a77a1cee.js"
   ]
 }
