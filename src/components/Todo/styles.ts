@@ -8,6 +8,7 @@ const Container = styled.div`
   grid-gap: 40px;
   width: 600px;
   margin-top: 17vh;
+  /* max-height: 40vh; */
 
   ${Media.SM} {
     grid-gap: 30px;
