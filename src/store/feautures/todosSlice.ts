@@ -4,13 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 
 interface ITodosState {
   todos: ITodo[];
+  changedTodoId: string | null;
 }
 
 const initialState: ITodosState = {
-  todos: [
-    { id: "1", title: "Clear", state: "active" },
-    { id: "2", title: "Clear", state: "active" },
-  ],
+  todos: [],
+  changedTodoId: null,
 };
 
 const todosSlice = createSlice({
@@ -25,27 +24,32 @@ const todosSlice = createSlice({
       } as ITodo;
       state.todos.push(todo);
     },
-    //   removeFavorites(state, { payload }: PayloadAction<string>) {
-    //     state.favorites = state.favorites.filter((movie) => {
-    //       return movie.id !== payload;
-    //     });
-    //   },
-    //   sortFavorites(state, { payload }: PayloadAction<string>) {
-    //     state.sortedFavorites = state.favorites.filter((movie) => {
-    //       return movie.title
-    //         .toLocaleLowerCase()
-    //         .includes(payload.toLocaleLowerCase());
-    //     });
-    //   },
-    //   resetSortedFavorites(state) {
-    //     state.sortedFavorites = [];
-    //   },
-    //   updateSearchword(state, { payload }: PayloadAction<string>) {
-    //     state.searchWord = payload;
-    //   },
+    deleteTodo(state, { payload }: PayloadAction<string>) {
+      state.todos = state.todos.filter((todo) => todo.id !== payload);
+    },
+    changeTodosState(state, { payload }: PayloadAction<string>) {
+      state.todos = state.todos.map((todo) =>
+        todo.id === payload
+          ? todo.state === "active"
+            ? { ...todo, state: "completed" }
+            : { ...todo, state: "active" }
+          : todo
+      );
+    },
+    changeTodo(
+      state,
+      { payload }: PayloadAction<{ id: string; title: string }>
+    ) {
+      state.todos = state.todos.map((todo) =>
+        todo.id === payload.id
+          ? { id: todo.id, title: payload.title, state: todo.state }
+          : todo
+      );
+    },
   },
 });
 
 export default todosSlice.reducer;
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, changeTodosState, changeTodo } =
+  todosSlice.actions;

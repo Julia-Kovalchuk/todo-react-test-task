@@ -1,23 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListItem } from "../ListItem/ListItem";
 import { Message, StyledList } from "./styles";
 import { ITodo } from "../../types/types";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { getTodos } from "../../store/selectors/todosSelectors";
+import { Modal } from "../Modal/Modal";
+import { Form } from "../Form/Form";
 
-export const List = () => {
-  const dispatch = useAppDispatch();
-  const { todos } = useAppSelector(getTodos);
+interface IProps {
+  todos: ITodo[];
+}
+
+export const List = ({ todos }: IProps) => {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   return (
-    <StyledList>
-      {todos.length === 0 ? (
-        <Message>your to-do list is still empty</Message>
-      ) : (
-        todos.map((todo) => {
-          return <ListItem todo={todo} key={todo.id} />;
-        })
+    <React.Fragment>
+      {isOpenModal && (
+        <Modal changeModalView={setIsOpenModal}>
+          <Form type="change" changeModalView={setIsOpenModal} />
+        </Modal>
       )}
-    </StyledList>
+
+      <StyledList>
+        {todos.length === 0 ? (
+          <Message>empty 🙃</Message>
+        ) : (
+          todos.map((todo) => {
+            return (
+              <ListItem
+                todo={todo}
+                key={todo.id}
+                changeModalView={setIsOpenModal}
+              />
+            );
+          })
+        )}
+      </StyledList>
+    </React.Fragment>
   );
 };

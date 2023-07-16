@@ -5,3 +5,7 @@ export interface ITodo {
   title: string;
   state: TodoStateType;
 }
+
+export type SortTodosType = "all" | "completed" | "active";
+
+export type FormTypes = "add" | "change";

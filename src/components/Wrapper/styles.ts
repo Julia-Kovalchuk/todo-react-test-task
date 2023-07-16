@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { Color } from "../../ui/colors";
+import { Media } from "../../ui/media";
 
 const StyledWrapper = styled.div`
   position: absolute;
@@ -10,7 +11,7 @@ const StyledWrapper = styled.div`
   z-index: -1;
   width: 100vw;
   height: 100vh;
-  background-color: ${Color.GreyDark};
+  background: linear-gradient(to right, #003399 0%, #cc00cc 100%);
 `;
 
 const Title = styled.h1`
@@ -21,12 +22,18 @@ const Title = styled.h1`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  max-width: 70%;
+  width: 70%;
+  margin-inline: auto;
   height: 30vh;
-  background: linear-gradient(to right, #003399 0%, #cc00cc 100%);
   font-size: 120px;
   color: ${Color.White};
-  /* opacity: 0.8; */
+
+  ${Media.SM} {
+    min-width: 100%;
+    height: 20vh;
+    font-size: 80px;
+  }
 `;
 
 export { StyledWrapper, Title };

@@ -1,55 +1,53 @@
-import React from "react";
-import { ButtonContainer, Container, Content, InputBox } from "./styles";
-import { Input } from "../Input/Input";
-import { useInput } from "../../hooks/useInput";
+import React, { useEffect, useState } from "react";
+import { ButtonContainer, Container, Content } from "./styles";
 import { Button, ButtonStyles } from "../Button/Button";
 import { List } from "../List/List";
-import { useAppDispatch } from "../../store/hooks/hooks";
-import { addTodo } from "../../store/feautures/todosSlice";
+import { useAppSelector } from "../../store/hooks/hooks";
+import { ITodo, SortTodosType } from "../../types/types";
+import { getTodos } from "../../store/selectors/todosSelectors";
+import { Form } from "../Form/Form";
 
 export const Todo = () => {
-  const { inputValue, onChange, setInputValue } = useInput();
-  const dispatch = useAppDispatch();
+  const { todos } = useAppSelector(getTodos);
+  const [todosView, setTodosView] = useState<SortTodosType>("all");
+  const [renderedTodos, setRenderedTodos] = useState<ITodo[]>(todos);
 
-  const handleAddTodo = () => {
-    dispatch(addTodo(inputValue));
-    setInputValue("");
-  };
+  useEffect(() => {
+    todosView === "active"
+      ? setRenderedTodos(todos.filter((todo) => todo.state === "active"))
+      : todosView === "completed"
+      ? setRenderedTodos(todos.filter((todo) => todo.state === "completed"))
+      : setRenderedTodos(todos);
+  }, [todosView, todos]);
 
   return (
     <Container>
-      <InputBox>
-        <Input
-          placeholder="Create a new todo..."
-          value={inputValue}
-          onChange={onChange}
-        />
-        <Button
-          title="Add"
-          type="button"
-          onClick={handleAddTodo}
-          typeStyle={ButtonStyles.Primary}
-        />
-      </InputBox>
+      <Form type="add" />
       <Content>
-        <List />
+        <List todos={renderedTodos} />
         <ButtonContainer>
           <Button
-            title="ALl"
+            title="All"
             type="button"
-            onClick={() => {}}
+            onClick={() => {
+              setTodosView("all");
+            }}
             typeStyle={ButtonStyles.Secondary}
           />
           <Button
             title="Active"
             type="button"
-            onClick={() => {}}
+            onClick={() => {
+              setTodosView("active");
+            }}
             typeStyle={ButtonStyles.Secondary}
           />
           <Button
             title="Completed"
             type="button"
-            onClick={() => {}}
+            onClick={() => {
+              setTodosView("completed");
+            }}
             typeStyle={ButtonStyles.Secondary}
           />
         </ButtonContainer>

@@ -12,6 +12,7 @@ interface IProps {
   typeStyle: ButtonStyles;
   onClick?: () => void;
   disabled?: boolean;
+  id?: string;
 }
 
 export const Button = ({
@@ -20,13 +21,15 @@ export const Button = ({
   onClick,
   disabled,
   typeStyle,
+  id,
 }: IProps) => {
   return (
     <StyledButton
       onClick={onClick}
       disabled={disabled}
       type={type}
-      typeStyle={typeStyle}
+      $typeStyle={typeStyle}
+      id={id}
     >
       {title}
     </StyledButton>

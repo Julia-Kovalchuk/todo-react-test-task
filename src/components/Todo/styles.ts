@@ -1,18 +1,18 @@
 import { styled } from "styled-components";
 import { Color } from "../../ui/colors";
+import { Media } from "../../ui/media";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  grid-gap: 20px;
+  grid-gap: 40px;
   width: 600px;
   margin-top: 17vh;
-  /* background: yellow; */
-`;
 
-const InputBox = styled.div`
-  display: flex;
-  grid-gap: 20px;
+  ${Media.SM} {
+    grid-gap: 30px;
+    margin-top: 16vh;
+  }
 `;
 
 const Content = styled.div`
@@ -27,4 +27,4 @@ const ButtonContainer = styled.div`
   border-top: 1px solid ${Color.GreyLight};
 `;
 
-export { Container, InputBox, Content, ButtonContainer };
+export { Container, Content, ButtonContainer };

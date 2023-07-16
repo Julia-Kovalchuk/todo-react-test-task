@@ -5,6 +5,5 @@ export enum Color {
   GreyDark = "#1b1c1c",
   GreyLight = "#a8abad",
   Pink = "#cc00cc",
+  Transparent = "rgba(27,28,28,0.700)",
 }
-//   Primary = "#23C9FF",
-//   Secondary = "#7CC6FE",
