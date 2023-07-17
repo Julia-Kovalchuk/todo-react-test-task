@@ -53,8 +53,6 @@ export const Form = ({ type, changeModalView }: IProps) => {
   };
 
   const onEnterDown = (e: React.KeyboardEvent) => {
-    console.log("jdjjdjd");
-    console.log(e.key);
     if (e.key === "Enter") {
       type === "add" ? handleAddTodo() : handleChangeTodo();
     }
